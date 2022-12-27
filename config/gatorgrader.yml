@@ -1,0 +1,31 @@
+---
+name: cs100-01-project
+break: true
+indent: 4
+---
+
+src/main:
+    java:
+        project/Main.java:
+            ConfirmFileExists
+            CountSingleLineComments --language Java --count 8
+            CountMultipleLineComments --language Java --count 2
+            MatchFileFragment --fragment "@author" --count 1 --exact
+
+writing/proposal.md:
+    ConfirmFileExists
+    CountFileWords --count 450
+
+writing/progress.md:
+    ConfirmFileExists
+    CountFileWords --count 250
+
+writing/report.md:
+    ConfirmFileExists
+    CountFileWords --count 1050
+
+# --> check that the number of commits in the Git repository is beyond a threshold
+CountCommits --count 10
+
+ExecuteCommand --command "gradle build"
+# ExecuteCommand --command "gradle -q --console plain run"
